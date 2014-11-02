@@ -1,8 +1,17 @@
 #photos {
 	text-align: center;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .projectParagraph {
 	padding-bottom:40px;
+}
+
+.subheader {
+	margin-bottom: 0.3em;
+}
+
+#main_img {
+	height: 300px;
 }

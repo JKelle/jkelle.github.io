@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="projectPage.css" type="text/css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+	
+	<h1 style="text-align:center">Pacman Artificial Intelligence</h1>
+
+	<div id="photos">
+		<img id="main_img" src="assets/Pacman/pacman_cropped.png" />
+	</div>
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				
+				<div class="projectParagraph">
+					
+					<h4>About the Projects</h4>
+
+					The Pacman Projects are a collection of programming assignments designed to teach students <strong>fundamental concepts in artificial intelligence</strong> by applying them to Pacman. However, these projects aren't just about coding the AI for a video game character. Rather, they provide a foundation for real-world problems such as computer vision, natural language processing, robotics, etc.
+
+					<br />
+					<br />
+
+					Students are provided with infrastructure and graphics code that can run different Pacman-related programs. However, the crucial algorithms that give Pacman his intelligence have been removed. The student's job to fill in the missing code and make Pacman smart!
+
+					<br />
+					<br />
+
+					The projects were created at UC Berkeley and are shared with other universities. More information can be found at the <a href="http://inst.eecs.berkeley.edu/~cs188/pacman/project_overview.html" target="_blank">UC Berkeley page</a>.
+				
+				</div>
+				
+				<div class="projectParagraph">
+
+					<h4>Search</h4>
+
+					First things first, Pacman must be able to navigate his world. I implemented <strong>breadth first</strong>, <strong>depth first</strong>, <strong>uniform cost</strong>, and <strong>A*</strong> search algorithms to help Pacman find dots and eat them efficiently.
+					
+					<br />
+					<br />
+
+					With enemies added to the mix, I implemented <strong>minimax</strong> and <strong>expectimax</strong> searches to help Pacman eat dots while avoiding his ghost adversaries. This involved designing state evaluation functions. In addition, I implemented the <strong>alpha/beta pruning</strong> versions of these algorithms to improve search efficiency.
+				
+				</div>
+				
+				<div class="projectParagraph">
+					
+					<h4>Reinforcement Learning</h4>
+
+					One assignment provides a Markov Decision Process for a simple gridworld with non-deterministic actions. I computed the expected utility of each state by implementing <strong>value iteration</strong>. Then, taking away the transition and reward functions, I calculated the optimal policy by implementing <strong>Q-learning</strong>.
+
+					<br />
+					<br />
+
+					The state space for a Pacman game is too large for exact Q-learning. Real-valued <strong>features</strong> are extracted from states, and Q-values are defined to be the dot product of this feature vector with a vector of weights. I implemented <strong>approximate Q-learning</strong> to learn these weights, adjusting them with each experience.
+				
+				</div>
+				
+				<div class="projectParagraph">
+
+					<h4>Probabilistic Inference</h4>
+
+					One assignment has Pacman chase ghosts he cannot see. Pacman receives noisy measurements of ghosts' distances. I implemented a <strong>tracking</strong> algorithm which maintains a belief state for each ghost being tracked. Belief states are updated with each observation and with each time lapse.
+
+					<br />
+					<br />
+
+					Sometimes the state space is too large to store. I implemented <strong>approximate inference</strong> with a joint particle filter algorithm. Each ghost action is influenced by the positions of the other ghosts, so resampling required querying a provided Bayes Net which describes the ghosts' transition function.
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Pacman Capture The Flag</h4>
+
+					The final assignment is a month-long, open-ended competition. Students create their own AI for a team of Pacman agents to play capture the flag against each other. Success requires both technical ability and creativity.
+
+					<br />
+					<br />
+
+					<div class="subheader"><i>Rules of the Game</i></div>
+					The board is divided into red and blue halves. Agents are ghosts on their own side, where their job is to attack invading opponents and prevent them from eating dots. When agents cross over into enemy territory, they transform into Pacman and eat the opponent's dots. Whichever team eats all but 2 dots first wins.
+
+					<br />
+					<br />
+
+					<div class="subheader"><i>Minimizing Uncertainty</i></div>
+					The game provides a <strong>partially observable</strong> environment. Agents can only see opponents within 5 cells of each other. Otherwise, agents only receive noisy distance measurements. Implementing inference to <strong>track opponent location</strong> over time added enormous value to my team.
+
+					<br />
+					<br />
+
+					<div class="subheader"><i>Managing Risk</i></div>
+					Offensive agents should avoid getting eaten by enemy ghosts. I developed a notion of "risk" when determining which dot my Pacman should target. My offensive agents use a form of A* search that incorporates both distance to nearest dot and distance to ghosts into its cost function. This helped my team <strong>identify safer dots</strong>.
+
+					<br />
+					<br />
+
+					<div class="subheader"><i>Contest Results</i></div>
+					During the month-long project, teams competed against each other in a round-robin fashion every night, and results were posted online. My agents slowly moved up the leader board as time went on. Our professor held a final tournament at the end of the semester, and my agents <strong>won 1st place!</strong>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>Python</li>
+						<li>Graph Search</li>
+						<ul>
+							<li>A*</li>
+							<li>Breadth First</li>
+							<li>Depth First</li>
+							<li>Minimax with alpha/beta pruning</li>
+							<li>Expectimax with alpha/beta pruning</li>
+						</ul>
+						<li>Reinforcement Learning</li>
+						<ul>
+							<li>Markov Decision Processes</li>
+							<li>Value Iteration</li>
+							<li>Policy Iteration</li>
+							<li>Exact Q-Learning</li>
+							<li>Approximate Q-Learning</li>
+						</ul>
+						<li>Probabilistic Inference</li>
+						<ul>
+							<li>Bayesian Networks</li>
+							<li>Markov Chains</li>
+							<li>Exact Inference</li>
+							<li>Particle Filters</li>
+						</ul>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
+

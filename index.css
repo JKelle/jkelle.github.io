@@ -3,17 +3,93 @@
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.projectThumbnail {
-	height: 150px;
-	margin: 10px;
+.everything {
+
+}
+
+.resource {
+	display: inline-block;
+	padding: 10px;
 	border-radius: 100%;
+	margin: 5px;
+	box-shadow: 0 0 3px black;
+	text-decoration: none;
+	text-align: left;
+}
+.resource:hover {
+	box-shadow: 0 0 5px black;
+	text-decoration: none;
+}
+.resource_container div a, .resource_container div a:hover {
+	/*text-decoration: none;*/
+	display: inline-block;
+	color: black;
+}
+
+.resource_container {
+	text-align: left;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#github /*a*/ {
+	background-color: white;
+	color: #923dea;
+}
+#resume /*a*/ {
+	background-color: white;
+	color: #de2390;
+}
+#linkedin /*a*/ {
+	background-color: white;
+	color: #1109dd;
 }
 
 .container {
 	text-align: center;
+	padding: 20px;
+}
+
+hr {
+	border-color: black;
+	margin-right: 40px;
+	margin-left: 40px;
+	margin-top: 0;
+}
+
+.projectThumbnail {
+	height: 150px;
+	/*margin: 5px;*/
+	border-radius: 100%;
 }
 
 .projectTile, .projectTile:hover {
+	display: inline-block;
+	box-shadow: 0 0 5px black;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 100%;
+	margin-bottom: 5px;
+}
+
+.projectTile:hover {
+	box-shadow: 0 0 10px black;
+}
+
+.projectCircle {
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+.projectTextLink, .projectTextLink:hover {
+	color: black;
+}
+
+.profilePic {
+	height: 150px;
+	margin: 10px;
+	border-radius: 100%;
+	
 	display: inline-block;
 	box-shadow: 0 0 5px black;
 	margin-left: 20px;

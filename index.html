@@ -1,34 +1,61 @@
 <html>
 <head>
 
-	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />-->
-	<link href="index.css" type="text/css" rel="stylesheet" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 </head>
 <body>
 
-	<h2 style="text-align:center">Projects</h2>
-	
-	<div class="container">
+    <div class="container">
+    <div class="row">
 
-		<div style="display: inline-block;">
-			<a class="projectTile" href="fifteen.html">
-			<!--<h4 style="text-align:center">AI for 15 Tile Game</h4>-->
-				<img class="projectThumbnail" src="assets/Fifteen/scrambled_homepage.png" />
-			</a>
-			<p>Fifteen Tile Game</p>
-		</div>
+        <div class="col-sm-5">
+            <h2 style="text-align: center;">Josh Kelle</h2>
+            <hr />
 
-		<div style="display: inline-block;">
-			<a class="projectTile" href="pacman.html">
-				<!--<h4 style="text-align:center">Pacman Projects</h4>-->
-				<img class="projectThumbnail" src="assets/Pacman/pacman_homepage.png" />
-			</a>
-			<p>Pacman Projects</p>
-		</div>
+            <img class="profilePic" src="assets/headshot.jpg" />
 
-	</div>
+            <div class="resource_container">
+                <div>
+                    <a id="github" class="resource fa fa-github-alt" href="https://github.com/jkelle" target="_blank"></a>
+                    <a href="https://github.com/jkelle" target="_blank"> Github</a>
+                </div>
+                <div>
+                    <a id="resume" class="resource fa fa-file-text-o" href="JoshKelleResume.pdf" target="_blank"></a>
+                    <a href="JoshKelleResume.pdf" target="_blank"> Resume</a>
+                </div>
+                <div>
+                    <a id="linkedin" class="resource fa fa-linkedin" href="https://linkedin.com/in/jkelle" target="_blank"></a>
+                    <a href="https://linkedin.com/in/jkelle" target="_blank"> LinkedIn</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-7">
+            <h2 style="text-align:center">Projects</h2>
+            <hr />
+
+            <div class="projectCircle">
+                <a class="projectTile" href="fifteen.html">
+                    <img class="projectThumbnail" src="assets/Fifteen/scrambled_homepage.png" />
+                </a>
+                <p><a class="projectTextLink" href="fifteen.html">Fifteen Tile Game</a></p>
+            </div>
+
+            <div class="projectCircle">
+                <a class="projectTile" href="pacman.html">
+                    <img class="projectThumbnail" src="assets/Pacman/pacman_homepage.png" />
+                </a>
+                <p><a class="projectTextLink" href="pacman.html">Pacman Projects</a></p>
+            </div>
+    
+        </div>
+    </div>
+    </div>
 
 </body>
 </html>

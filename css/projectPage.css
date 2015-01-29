@@ -1,0 +1,35 @@
+#photos {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#photos video {
+	max-width: 100%;
+}
+
+#photos img {
+	max-width: 100%;
+}
+
+.projectParagraph {
+	padding-bottom: 10px;
+}
+
+.projectParagraph p {
+	padding-bottom: 10px;
+}
+
+.subheader {
+	margin-bottom: 0.3em;
+	font-style: italic;
+}
+
+#main_img {
+	height: 300px;
+}
+
+.container {
+	margin: auto;
+	margin-bottom: 30px;
+}

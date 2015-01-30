@@ -33,3 +33,13 @@
 	margin: auto;
 	margin-bottom: 30px;
 }
+
+a {
+	color: black;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: black;
+	text-decoration: none;
+}

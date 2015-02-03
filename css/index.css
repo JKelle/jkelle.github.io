@@ -3,6 +3,17 @@
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.introParagraph {
+	font-size: large;
+	margin-top: 30px;
+	margin-right: 40px;
+	margin-left: 40px;
+}
+
+p {
+	padding-bottom: 10px;
+}
+
 .resource {
 	display: inline-block;
 	padding: 10px;

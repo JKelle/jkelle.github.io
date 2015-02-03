@@ -1,0 +1,127 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
+	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+	
+	<h1 style="text-align:center">PolyDrop</h1>
+
+	<div style="text-align:center;">
+		(<a href="https://github.com/mattbroussard/polydrop-game" target="_blank">source on github</a>)
+	</div>
+
+	<div id="photos">
+		<img id="main_img" src="../assets/PolyDrop/PolyDrop.png" />
+	</div>
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				
+				<div class="projectParagraph">
+
+					<h4>About PolyDrop</h4>
+
+					<p>
+					PolyDrop is a <strong>game</strong> I made with a couple friends at a <strong>hackathon</strong>. It's a simple 2D game for the <strong>Leap Motion Controller</strong> in which players try to catch colorful falling polygons on a platform controlled by their hand.
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Making the Game</h4>
+
+					<p>
+					My team of three (<a target="_blank" href="http://mattb.name/">Matt Broussard</a>, Dallas Kelle, and myself) created PolyDrop at a competitive hackathon sponsored by <a target="_blank" href="http://www.leapmotion.com/">Leap Motion</a> and <a target="_blank" href="http://edgecase.io/">Edgecase</a>. We won <strong>1<super>st</super> place</strong> after demoing our game to several judges and invited guests at <a target="_blank" href="http://capitalfactory.com/">Capital Factory</a>.
+					</p>
+
+					<p>
+					After the hackathon victory, we continued to polish the game and ultimately published PolyDrop on Leap Motion's <a target="_blank" href="https://apps.leapmotion.com/apps/polydrop/">App Store</a>. It is freely available and has over 35,000 downloads.
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>How to Play</h4>
+					
+					<p>
+					Players try to catch colorful falling polygons and balance them on a platform controlled with their hand. If held for long enough, the polygons disappear and reward the player with points. Polygons falling below the screen punish the player with negative points and health reduction. Health regenerates slowly over time, but once it reaches zero, that's Game Over!
+					</p>
+
+					<p>
+					Collecting enough points will cause the player to <strong>level up</strong>. Leveling up introduces new, more challenging shapes and causes them to fall more quickly. The higher levels requires a bit of <strong>strategy</strong> to decide which polygons to chase and which to ignore. Even the positioning of the polygons on the platform becomes important.
+					</p>
+				
+				</div>
+				
+				<div class="projectParagraph">
+					
+					<h4>Other Features</h4>
+
+					<p>
+					<strong>Free Play Mode</strong> allows players to play the game without the health mechanic. In other words: no Game Over.
+					</p>
+
+					<p>
+					<strong>Two Handed Mode</strong> allows the platform split into two mini platforms, each controlled by a different hand. Two people can play the game together. This is especially fun in Free Play Mode. Or, a single person could try to use both their hands.
+					</p>
+
+					<p>
+					A local <strong>leaderboard</strong> encourages competition between friends and previous scores.
+					</p>
+				
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Press</h4>
+					
+					<p>Here are a few articles about the event.</p>
+					
+					<ul>
+						<li><p>This <a href="http://finance.yahoo.com/news/winner-first-annual-compare-metrics-185400539.html" target="_blank">article</a> from Yahoo! Finance describes the hackathon and its sponsors in more detail. (Edgecase used to be called Compare Metrics)</p></li>
+
+						<li><p>This <a href="http://edgecase.io/blog/comparemetrics-leapmotion-hackathon-success/" target="_blank">article</a> from the Edgecase blog describes the competition in more detail.</p></li>
+						
+						<li><p>This is a <a href="https://www.youtube.com/watch?v=_hLC74Q4Wn4" target="_blank">video</a> of me demoing PolyDrop at Capital Factory.</p></li>
+					</ul>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>Leap Motion</li>
+						<li>Game Design</li>
+						<li>Java</li>
+						<li>Box2D</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+
+		</div>
+	</div>
+
+	{% include statcounter.html %}
+	
+</body>
+</html>
+

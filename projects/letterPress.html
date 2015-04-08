@@ -1,0 +1,127 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
+	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+	
+	<h1 style="text-align: center">AI for the LetterPress Game</h1>
+
+	<div style="text-align: center">
+		(<a href="https://github.com/JKelle/LetterPressAI" target="_blank">source on Github</a>)
+	</div>
+
+	<div id="photos">
+		<img id="main_img" src="/assets/LetterPress/LetterPress.png" />
+	</div>
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				
+				<div class="projectParagraph">
+					
+					<h4>About the Game</h4>
+
+					<p>
+					<a href="https://itunes.apple.com/us/app/letterpress-word-game/id526619424?mt=8" target="_blank">LetterPress</a> is a mobile turn-based word game on the App Store. Two adversaries compete by forming words from a 5x5 grid of letters. All tiles start with a background color of white. A tile becomes blue when you use it in your word, and it will become red when your opponent uses it. A blue tile surrounded on all sides by other blue tiles will become "locked" and cannot change colors, and vice-versa for red tiles. The opponent may still use locked tiles, but they will remain blue. Locked tiles appear dark blue or dark red. Once all tiles have been used at least once, no white tiles remain. At this point, whoever has more tiles their color wins!
+					</p>
+
+					<p>
+					To be clear, I didn't create LetterPress. I wrote a program that's good at playing LetterPress. It's a stand-alone <strong>Java</strong> app. The user inputs the state of the board by typing in the 25 characters and colors. My program presents the user with a list of the best possible moves via a simple GUI.
+					</p>
+				
+				</div>
+				
+				<div class="projectParagraph">
+
+					<h4>Challenge</h4>
+
+					<p>
+					The main challenge for this project was crafting an effective <strong>evaluation function</strong>. Such a function accepts any valid game state as input and returns a single real value indicating how desirable that state would be. The game itself doesn't have a single score that the user tries to maximize. One could naively maximize the number of blue tiles, but this turns out to be a poor strategy. Defining a good evaluation function is not obvious!
+					</p>
+				
+				</div>
+				
+				<div class="projectParagraph">
+					
+					<h4>Solution</h4>
+
+					<p>
+					I had played the game myself many times before creating the AI. That experience allowed me to discover some powerful strategies. For example, <strong>vowels</strong> are more valuable than consonants, and <strong>duplicate letters</strong> are less valuable than unique letters. My AI assigns a single value to each individual tile according to the following algorithm:
+					</p>
+
+					<ol>
+						<li>Assign each tile a value of 1.</li>
+						<li>Increment the value of all vowel tiles. Vowels are worth 2.</li>
+						<li>For each letter on the board, divide its value by the number of times that letter occurs. If there are two 'D's, the value of a 'D' is 0.5.</li>
+						<li>Double the value of dark, or "locked" tiles.</li>
+					</ol>
+
+					<p>
+					An entire board is scored by summing the values of all the blue tiles and subtracting the values of all the red tiles. This has the effect of <strong>maximizing your lead</strong>. For a given turn, the program simulates playing every playable word and scores the resulting boards. The highest scoring boards are presented to the user along with the words that produce such boards.
+					</p>
+
+					<p>
+					This algorithm is <strong>brute force</strong> in the sense that it simulates all possible moves. It is <strong>greedy</strong> in the sense that it only thinks one move ahead. There's no long-term planning.
+					</p>
+				
+				</div>
+				
+				<div class="projectParagraph">
+
+					<h4>Other Notes</h4>
+
+					<p>
+					An interesting phenomenon occurs from having <strong>duplicate letters</strong>. A single word can be constructed from different tiles. Suppose the board has two 'B's, one red and on blue. If the user wants to play 'BURRITO', it's smart to use the red 'B' instead of its blue counterpart. My AI accounts for this and considers both candidates.
+					</p>
+
+					<p>
+					Conversely, two different words can result in <strong>identical game states</strong>. The words don't need to be anagrams, either. This is a consequence of "locked" tiles. As a convenience, I aggregate such words when displaying potential boards.
+					</p>
+
+					<p>
+					There's no guarantee that this evaluation function gives rise to optimal play. In fact, it almost certainly doesn't. However, I'd be very impressed if a human could beat it.
+					</p>
+
+					<p>
+					P.S. I don't actually use this program when I play LetterPress. :)
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>Java</li>
+						<li>Artificial Intelligence</li>
+						<ul>
+							<li>Evaluation Function</li>
+						</ul>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+
+		</div>
+	</div>
+
+	{% include statcounter.html %}
+
+</body>
+</html>
+

@@ -7,6 +7,9 @@
 	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
 	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
 	<meta name="viewport" content="width=device-width" />
+	<style>
+		h4 {margin-top: 40px;}
+	</style>
 </head>
 <body>
 
@@ -93,7 +96,7 @@
 			<div id="description" class="col-sm-6">
 				<div class="projectParagraph">
 					<p>
-					A <strong>seam</strong> is a path of pixels that runs vertically or horizontally along the image. The seam that runs though the least amount of energy is the best seam to remove because it contains the least important pixels. This optimal seam is computed by first computing a <strong>cumulative minimum energy map</strong>, which maps each pixel to the minimum amount of energy required to reach it. Such a map is efficiently computed using a <strong>dynamic programming algorithm</strong>.
+					A <strong>seam</strong> is a path of pixels that runs vertically or horizontally along the image. The seam that runs though the least amount of energy is the best seam to remove because it contains the least important pixels. This optimal seam is computed by first computing a <strong>cumulative minimum energy map</strong>, which maps each pixel to the minimum amount of energy required to reach it. Such a map is efficiently computed using a dynamic programming algorithm.
 					</p>
 				</div>
 			</div>
@@ -102,6 +105,30 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_horizontal_costs.jpg" />
+						    <figcaption>horizontal cumulative minimum energy</figcaption>
+						</figure>
+					</div>
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_vertical_costs.jpg" />
+						    <figcaption>vertical cumulative minimum energy</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
 
 		<!-- first seams -->
 
@@ -113,7 +140,7 @@
 			<div id="description" class="col-sm-6">
 				<div class="projectParagraph">
 					<p>
-					The seams are computed from these cumulative minimum energy maps by working backwards greedily. Intuitively, they intersect the least amount of detail. This means they <strong>aren't very noticeable</strong> when they're removed. Here are the first horizontal and first vertical seams for this image:
+					The seams are computed from these cumulative minimum energy maps by working backwards greedily. Intuitively, they intersect the least amount of detail. This means they aren't very noticeable when they're removed. Here are the first horizontal and first vertical seams for this image:
 					</p>
 				</div>
 
@@ -172,7 +199,7 @@
 			</div>
 		</div>
 
-		<!--  -->
+		<!-- compare to cropped and naive resize -->
 
 		<div class="row">
 			<div class="col-sm-3">
@@ -215,8 +242,164 @@
 			<div class="col-sm-1">
 			</div>
 		</div>
-		<!-- Technologies -->
 
+
+
+		<!-- increase dimensions -->
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<h4>Increasing dimensions</h4>
+
+				<div class="projectParagraph">
+					<p>
+					Seam carving can also be used to <strong>increase</strong> image dimensions. Seams are computed the same way, but instead of removing pixels, we insert new pixels that are the average of their neighbors. To prevent inserting pixels along the same seam every time, multiple seams are computed at once, then pixels are inserted.
+					</p>
+
+					<p>
+					In the example below, notice how the boats maintain their original shape and size. The mountains are taller and closer together. They're shaped differently, not just stretched. Also notice their reflections in the water no longer match.
+					</p>
+				</div>
+
+				<figure>
+				    <img class="bodyPhoto" src="../assets/ContentAwareResizing/karst.jpg" />
+				    <figcaption>original (800 x 600)</figcaption>
+				</figure>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/karst_tall_resize.jpg" />
+						    <figcaption>naive resizing (500 x 900)</figcaption>
+						</figure>
+					</div>
+
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/karst_tall.jpg" />
+						    <figcaption>content-aware resized (500 x 900)</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
+
+
+		<!-- other examples -->
+
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<h4>Other examples</h4>
+
+				<div class="projectParagraph">
+					<p>
+					Here are some other image I ran through my program.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+
+			<div class="col-sm-8">
+				<figure>
+				    <img class="bodyPhoto" src="../assets/ContentAwareResizing/austin.jpg" />
+				    <figcaption>original (950 x 633)</figcaption>
+				</figure>
+
+				<figure>
+				    <img class="bodyPhoto" src="../assets/ContentAwareResizing/austin_resize.jpg" />
+				    <figcaption>naive resize (950 x 433)</figcaption>
+				</figure>
+
+				<figure>
+				    <img class="bodyPhoto" src="../assets/ContentAwareResizing/austin_h200.jpg" />
+				    <figcaption>content-aware resized (950 x 433)</figcaption>
+				</figure>
+			</div>
+
+			<div class="col-sm-2">
+			</div>
+		</div>
+
+
+		<!-- bloopers -->
+
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<h4>Bloopers</h4>
+
+				<div class="projectParagraph">
+					<p>
+					This seam carving procedure can sometimes give unexpected and funny results. This typically happens when objects of interest have low energy.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/UT.jpg" />
+						    <figcaption>original (772 x 692)</figcaption>
+						</figure>
+					</div>
+
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/UT_w200.jpg" />
+						    <figcaption>content-aware resized (572 x 692)</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
+
+
+		<!-- Technologies -->
 
 		<div class="row">
 			<div class="col-sm-3">

@@ -1,0 +1,246 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
+	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+	<h1 style="text-align:center">Content-Aware Image Resizing</h1>
+
+	<div id="photos">
+		<video height="300" autoplay="autoplay" poster="../assets/ContentAwareResizing/im1_first_seams.png" loop>
+			<source src="../assets/ContentAwareResizing/im1_w.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<div class="projectParagraph">
+
+					<h4>About</h4>
+
+					<p>
+					Content-aware image resizing, also called "seam carving", is a method of resizing an image while preserving the structure of important objects. It's better than traditional image resizing because it doesn't squish or stretch content. It's better than cropping because it doesn't omit important content.
+					</p>
+
+					<p>
+					The algorithm was developed by Shai Avidan and Ariel Shamir (<a href="../assets/seamCarvingPaper.pdf" target="_blank">paper</a>, <a href="https://www.youtube.com/watch?v=vIFCV2spKtg" target="_blank">cool video</a>, <a href="https://en.wikipedia.org/wiki/Seam_carving" target="_blank">Wikipedia article</a>).
+					</p>
+
+				</div>
+
+				<!-- energy function -->
+
+				<div class="projectParagraph">
+
+					<h4>How it Works</h4>
+
+					<p>
+					Some <strong>energy function</strong> is defined on the image such that higher energy implies greater importance. I used <strong>gradient magnitude</strong> as my energy function, though there are other choices which yield different results.
+					</p>
+
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1.jpg" />
+						    <figcaption>original image</figcaption>
+						</figure>
+					</div>
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_energy.jpg" />
+						    <figcaption>energy function</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
+
+
+		<!-- cumulative minimum energy map -->
+
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				<div class="projectParagraph">
+					<p>
+					A <strong>seam</strong> is a path of pixels that runs vertically or horizontally along the image. The seam that runs though the least amount of energy is the best seam to remove because it contains the least important pixels. This optimal seam is computed by first computing a <strong>cumulative minimum energy map</strong>, which maps each pixel to the minimum amount of energy required to reach it. Such a map is efficiently computed using a <strong>dynamic programming algorithm</strong>.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+
+		<!-- first seams -->
+
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				<div class="projectParagraph">
+					<p>
+					The seams are computed from these cumulative minimum energy maps by working backwards greedily. Intuitively, they intersect the least amount of detail. This means they <strong>aren't very noticeable</strong> when they're removed. Here are the first horizontal and first vertical seams for this image:
+					</p>
+				</div>
+
+				<figure>
+				    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_first_seams.png" />
+				    <figcaption>first optimal seams</figcaption>
+				</figure>
+
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<!-- reduced width and height -->
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				<div class="projectParagraph">
+					<p>
+					Repeatedly computing and removing seams gives the effect of content-aware image resizing. Here is an example where width is reduced by 100 pixels, then height is reduced by 100 pixels.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1.jpg" />
+						    <figcaption>original (600 x 450)</figcaption>
+						</figure>
+					</div>
+
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_w100h100.jpg" />
+						    <figcaption>content-aware resized (500 x 350)</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
+
+		<!--  -->
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				<div class="projectParagraph">
+					<p>
+					Compare this to the naive resizing (left). Naive resizing shrinks the content. Notice the buildings are all smaller. When compared to cropping (right), you can see how some buildings near the top are lost, and much of the blue sky is now gone. Cropping also removed several rocks in the ocean.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_naive.jpg" />
+						    <figcaption>naive resizing (500 x 350)</figcaption>
+						</figure>
+					</div>
+
+					<div class="col-sm-6">
+						<figure>
+						    <img class="bodyPhoto" src="../assets/ContentAwareResizing/im1_cropped.jpg" />
+						    <figcaption>cropped (500 x 350)</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
+		<!-- Technologies -->
+
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+				<div class="projectParagraph">
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>MATLAB</li>
+						<li>Computer vision</li>
+						<li>Seam carving</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+	</div>
+
+	{% include statcounter.html %}
+
+</body>
+</html>
+

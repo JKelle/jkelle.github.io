@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
-	
+
 	<h1 style="text-align: center">AI for the LetterPress Game</h1>
 
 	<div style="text-align: center">
@@ -27,7 +27,7 @@
 	<div id="photos">
 		<img id="main_img" src="/assets/LetterPress/LetterPress.png" />
 	</div>
-	
+
 	<div class="container">
 		<div class="row">
 
@@ -35,9 +35,9 @@
 			</div>
 
 			<div id="description" class="col-sm-6">
-				
+
 				<div class="projectParagraph">
-					
+
 					<h4>About the Game</h4>
 
 					<p>
@@ -47,9 +47,9 @@
 					<p>
 					To be clear, I didn't create LetterPress. I wrote a program that's good at playing LetterPress. It's a stand-alone <strong>Java</strong> app. The user inputs the state of the board by typing in the 25 characters and colors. My program presents the user with a list of the best possible moves via a simple GUI.
 					</p>
-				
+
 				</div>
-				
+
 				<div class="projectParagraph">
 
 					<h4>Challenge</h4>
@@ -57,11 +57,11 @@
 					<p>
 					The main challenge for this project was crafting an effective <strong>evaluation function</strong>. Such a function accepts any valid game state as input and returns a single real value indicating how desirable that state would be. The game itself doesn't have a single score that the user tries to maximize. One could naively maximize the number of blue tiles, but this turns out to be a poor strategy. Defining a good evaluation function is not obvious!
 					</p>
-				
+
 				</div>
-				
+
 				<div class="projectParagraph">
-					
+
 					<h4>Solution</h4>
 
 					<p>
@@ -82,19 +82,15 @@
 					<p>
 					This algorithm is <strong>brute force</strong> in the sense that it simulates all possible moves. It is <strong>greedy</strong> in the sense that it only thinks one move ahead. There's no long-term planning.
 					</p>
-				
+
 				</div>
-				
+
 				<div class="projectParagraph">
 
 					<h4>Other Notes</h4>
 
 					<p>
-<<<<<<< HEAD
-					An interesting phenomenon occurs from having <strong>duplicate letters</strong>. A single word can be constructed from different tiles. Suppose the board has two 'B's, one red and on blue. If the user wants to play 'BURRITO', it's smart to use the red 'B' instead of its blue counterpart. My AI accounts for this and considers both candidates.
-=======
 					An interesting phenomenon occurs from having <strong>duplicate letters</strong>. A single word can be constructed from different tiles. Suppose the board has two 'B's, one red and one blue. If the user wants to play 'BURRITO', it's smart to use the red 'B' instead of its blue counterpart. My AI accounts for this and considers both candidates.
->>>>>>> b1a449bbd4cc2a4684e93cf744d78851fff5b2c4
 					</p>
 
 					<p>

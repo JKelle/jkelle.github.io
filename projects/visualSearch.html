@@ -1,0 +1,243 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
+	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
+	<meta name="viewport" content="width=device-width" />
+	<style>
+		h4 {margin-top: 40px;}
+	</style>
+</head>
+<body>
+
+	<h1 style="text-align:center">Video Search with Bag of Visual Words</h1>
+
+	<div id="photos">
+		<img id="main_img" src="../assets/VisualSearch/visual_search.png" />
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<div class="projectParagraph">
+
+					<h4>About</h4>
+
+					<p>
+					What is search? Suppose you have a large corpus of documents, but you want to find the subset of documents relevant to some query. Search is the process of surfacing those relevant documents.
+					</p>
+
+					<p>
+					What is visual search? In this project, the corpus is a video (two episodes of Friends), the documents are images, and the query is an image or a cropped region of an image.
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Text Search</h4>
+
+					<p>
+					Traditional search is done with text. My implementation of visual search borrows many ideas from text search. To understand how visual search works, you must first understand how text search works.
+					</p>
+
+					<p>
+					The high level idea is to convert each document into a vector of real numbers in some meaningful feature space, and then rank each document against the given query by comparing their respective feature vectors.
+					</p>
+
+					<div class="subheader">Bag of Words</div>
+
+					<p>
+					One common feature space for text search is called "bag of words." It is simply a count of how many times each word appears in the document. One limitation with this representation is it does not capture grammar or the relative order of words.
+					</p>
+
+					<div class="subheader">Stop Words</div>
+					<p>
+					Words like "like", "and", and "are" are common to many documents but don't provide much meaning. These words are called "stop words." It is common practice to exclude them from the bag of words model. This improves relevancy by reducing the similarity between the query and irrelevant documents.
+					</p>
+
+					<div class="subheader">TF-IDF</div>
+					<p>
+					It is also helpful to give each word a different weight based on how rare it is among the corpus. One way to compute such a weighting is to use "term frequency-inverse document frequency" (TF-IDF). Simply put, if a word appears many times in a given document, it's value will be higher. Conversely, if the word appears in many documents, its value will be lower. This is a way of normalizing to word frequency across documents.
+					</p>
+
+					<div class="subheader">Scoring</div>
+					<p>
+					A relevancy score is assigned to each document by comparing its feature vector with the query's feature vector. There are many similarity metricts to choose from. Some common ones are dot product, cosine similarity, and euclidean distance. All documents are sorted by relevancy score, and the top N of them are returned as search results.
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Visual Search</h4>
+
+					<p>
+					The high level idea is to convert each image into a bag of <strong>visual words</strong>, and then use the same bag of words method we used for text search.
+					</p>
+
+					<div class="subheader">Visual Vocabulary</div>
+					<p>
+					The first step is to compute the visual vocabulary offline. I use <strong>SIFT</strong> to identify small, descriptive patches in the image. Many of these patches look similar. I want to group similar patches together and consider them to be the same visual word. I acheive this by applying <strong>k-means clustering</strong> to the SIFT feature vectors. The number of clusters is a free paramter. I used k = 1500. This means my vocabualry has 1500 visual words.
+					</p>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/visual_words.png" />
+					    <figcaption>Three different visual words.</figcaption>
+					</figure>
+
+					<div class="subheader">Visual Stop Words</div>
+					<p>
+					Just like with text, some visual words are very common and mostly meaningless. I declare the most common visual words to be stop words and exclude them.
+					</p>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/stop_words.png" />
+					    <figcaption>Plot of visual word frequencies among the corpus. Words that occur more than 150 times are marked as stop words.</figcaption>
+					</figure>
+
+					<div class="subheader">Bag of Visual Words</div>
+					<p>
+					Now treat visual words the same as text words. An image can be represented as a histogram that counts the requency of each visual word in the image. We can even use the same TF-IDF weighting algorithm.
+					</p>
+
+					<div class="subheader">Query Time</div>
+					<p>
+					At query time (online), run the SIFT descriptor over the query image. Map each response patch to a visual word by nearest neighbors among the k cluster centers. This can be sped up using hierarchical clustering trees. From here, the process is identical to text search!
+					</p>
+
+				</div>
+
+
+				<div class="projectParagraph">
+
+					<h4>Example 1</h4>
+					<br />
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/example1_query.png" />
+					    <figcaption>Query Image</figcaption>
+					</figure>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/example1_results.png" />
+					    <figcaption>Returned Images</figcaption>
+					</figure>
+
+					<p>
+					For this first example, I used the whole image as the query. All returned images include the same red couch, and the first 4 include the same subject. The 5th image shows different people on the same couch and with the same white object in the background. All the images are similar yet not nearly-identical (with the exception of 2 and 4), which is a pleasing result.
+					</p>
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Example 2</h4>
+					<br />
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/example2_query.png" />
+					    <figcaption>Query Image</figcaption>
+					</figure>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/example2_results.png" />
+					    <figcaption>Returned Images</figcaption>
+					</figure>
+
+					<p>
+					For this example, the query was the cropped region around the word "producers," shown in red. All of the top 5 results contain either the word "producers" or "producer."
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Example 3</h4>
+
+					<p>
+					This example shows how stop words can affect search results. The query is the cropped region shown in green. It contains the objects on the coffee table.
+					</p>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/VisualSearch/example3_query.png" />
+					    <figcaption>Query Image</figcaption>
+					</figure>
+
+					<p>
+					The top three results with stop words are shown on the left, and the top three without stop words are shown on the right. It looks to me like relevancy is better without stop words, which is what I expected.
+					</p>
+
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="col-sm-6">
+						<figure>
+						    <figcaption>Returned Images: including stop words</figcaption>
+						    <img class="bodyPhoto" src="../assets/VisualSearch/example3_results_including_stop_words.png" />
+						</figure>
+					</div>
+					<div class="col-sm-6">
+						<figure>
+						    <figcaption>Returned Images: excluding stop words</figcaption>
+						    <img class="bodyPhoto" src="../assets/VisualSearch/example3_results_including_stop_words.png" />
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-1">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<!-- Technologies -->
+
+				<div class="projectParagraph">
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>MATLAB</li>
+						<li>Computer vision</li>
+						<li>Information retrieval</li>
+						<li>SIFT descriptors</li>
+						<li>K-means clustering</li>
+						<li>Bag of words</li>
+						<li>Stop words</li>
+						<li>TF-IDF</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+	</div>
+
+	{% include statcounter.html %}
+
+</body>
+</html>
+

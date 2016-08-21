@@ -1,0 +1,136 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
+	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
+	<meta name="viewport" content="width=device-width" />
+	<style>
+		h4 {margin-top: 40px;}
+	</style>
+</head>
+<body>
+
+	<h1 style="text-align:center">RoboCup</h1>
+	<p style="text-align:center">(This page is a work in progress)</p>
+
+	<div id="photos">
+		<img id="main_img" src="../assets/RoboCup/action_shot.jpg" />
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<div class="projectParagraph">
+
+					<h4>About</h4>
+
+					<p>
+					<a href="https://en.wikipedia.org/wiki/RoboCup">RoboCup</a> is an organization and autonomous robotics competition. Teams from across the world develop autonomous robots that compete in soccer games. The primary goal of RoboCup is to advance research in robotics and artificial intelligence.
+					</p>
+
+					<p>
+					The federation changes the rules every year by introducing new challenges. In previous years, the ball was a bright, solid orange. This year (2016), the league switched to a new, more traditional white ball with black pentagons.
+					</p>
+
+					<p>
+					My task was to design and implement a new computer vision algorithm for detecting the ball. One of the most challenging aspects of this task is the vision pipeline must run in real time (less than 30 Hz) on relatively weak hardware.
+					</p>
+
+					<p>
+					Many teams had trouble seeing the ball this year. Our team's ball detection was very good.
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+					<h4>RoboCup Competition</h4>
+
+					<p>
+						Our team won 2nd place in the 2016 international RoboCup competition in Leipzig, Germany.
+					</p>
+
+					<div class="videoWrapper">
+					    <iframe src="https://www.youtube.com/embed/XgRw42oHN-Y", allowfullscreen></iframe>
+					</div>
+					<p>Finals against the B-Human team</p>
+
+					<div class="videoWrapper">
+						<iframe src="https://www.youtube.com/embed/-uIZdFzCJX0", allowfullscreen></iframe>
+					</div>
+					<p>Semi finals against the Nao-Team HTWK team</p>
+
+					<div class="videoWrapper">
+						<iframe src="https://www.youtube.com/embed/2SBB0li1Ccg", allowfullscreen></iframe>
+					</div>
+					<p>Game against the Australian UNSW team (commentary in English)</p>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/RoboCup/spl.jpg" />
+					    <figcaption>Here's a photo of all the SPL contestants for the 2016 competition. Our team is front and center with the UT Austin flag.</figcaption>
+					</figure>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/RoboCup/team_with_trophies.jpg" />
+					    <figcaption>Here's our team with our trophies.</figcaption>
+					</figure>
+
+				</div>
+
+				<div class="projectParagraph">
+					<h4>US Open Competition</h4>
+					Our team won 1st place in the 2016 US Open.
+					<figure>
+					    <img class="bodyPhoto" src="../assets/RoboCup/usopen_trophy.jpg" />
+					    <figcaption>Nao robot with 1st place US Open trophy</figcaption>
+					</figure>
+
+					<figure>
+					    <img class="bodyPhoto" src="../assets/RoboCup/usopen_flag.jpg" />
+					    <figcaption>Here's our team with our flag and trophy.</figcaption>
+					</figure>
+				</div>
+
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<!-- Technologies -->
+
+				<div class="projectParagraph">
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>Robotics</li>
+						<li>Computer vision</li>
+						<li>OpenCV</li>
+						<li>C++</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+		</div>
+
+	</div>
+
+	{% include statcounter.html %}
+
+</body>
+</html>
+

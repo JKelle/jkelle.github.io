@@ -1,0 +1,86 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link href="../css/projectPage.css" type="text/css" rel="stylesheet" />
+	<link href="../css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-device-width: 480px)" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+	<h1 style="text-align: center">Personalized Image Aesthetic Prediction</h1>
+
+	<div style="text-align: center">
+		(<a href="https://github.com/thanhan/image-aesthetic" target="_blank">source on Github</a>)
+	</div>
+
+	<style type="text/css">
+		@media screen and (min-device-width: 480px) {
+			#main_img {
+				max-height: 400px;
+				height: 400px;
+			}
+		}
+	</style>
+	<div id="photos">
+		<img id="main_img" src="../assets/imageAesthetic/aadb.jpg" />
+	</div>
+
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-3">
+			</div>
+
+			<div id="description" class="col-sm-6">
+
+				<div class="projectParagraph">
+
+					<h4>About the Project</h4>
+
+					<p>
+					This work was my final project for a graduate computer vision class. My partner was An Nguyen. Our goal was to create a system that would predict a personalized rating of image aesthetic. We used the <a href="http://www.ics.uci.edu/~skong2/aesthetics.html">Aesthetics and Attributes Database (AADB)</a>.
+					</p>
+
+					<p>
+						My contribution to the work was to extract useful features from the images. I fine-tuned a convolutional neural network, originally trained on ImageNet, using Caffe. I tried several network architectures (AlexNet, VGG-16, ResNet).
+					</p>
+
+					<p>
+						Abstract
+						<br />
+						<i>Computing the aesthetic quality of an image has gained attention in recent years. One application is mining good quality images to show users. However, people have different opinions on image quality and aesthetic. We design a probabilistic graphical model that takes into account personal taste to predict personalized image aesthetic scores on a scale of 1 to 5. We experiment with different image features and evaluate the system using a large real-world dataset and find strong improvement over competitive baselines. We also show that our approach is particularly useful to users who annotate only a small number of image aesthetic scores.</i>
+					</p>
+
+					<p>
+						See our full paper <a href="joshkelle.com/personalized-image-aesthetic.pdf">here</a>.
+					</p>
+
+				</div>
+
+				<div class="projectParagraph">
+
+					<h4>Technologies & Concepts</h4>
+					<ul>
+						<li>Computer Vision</li>
+						<li>Neural Networks</li>
+						<li>Caffe</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="col-sm-3">
+			</div>
+
+		</div>
+	</div>
+
+	{% include statcounter.html %}
+
+</body>
+</html>
+
